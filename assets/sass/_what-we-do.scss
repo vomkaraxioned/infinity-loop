@@ -1,11 +1,60 @@
 .what-we-do {
-  padding: 182px 0 103px 0;
+  padding: 182px 0 63px 0;
 
   &__title {
     @include font(map.get($colors,"blueShade"),$size:$large,$text:capitalize);
   }
 
   &__description {
+    padding: 47px 0 89px 0;
+    @include font(map.get($colors,"blackShade"),$size:21px);
+    line-height: 1.5;
 
+    a {
+      @include font(map.get($colors,"blueShade"));
+
+      &:hover {
+        @include font(map.get($colors,"greyShade"));
+      }
+    }
+  }
+
+  &__services {
+    gap: 10%;
+    @include flex(true,$wrap:wrap,$justify:center);
+  }
+
+  &__service {
+    padding-bottom: 40px;
+    @include position(relative);
+    @include flex(true,40%,$direction:column);
+
+    $i:1;
+   @each $icon in $what-section {
+    &:nth-child(#{$i})::before{
+      @include position(absolute,$left:-15%);
+      @include font(map.get($colors,"blueShade"),$size:42px);
+      @include icon($icon);
+    }
+    $i:$i+1;
+   }
+
+    &__title {
+      @include font(map.get($colors,"blueShade"),$size:26px,$text:capitalize);
+    }
+
+    &__description {
+      padding:32px 0 45px 0 ;
+      @include font(map.get($colors,"blackShade"),$size:18px,$text:capitalize);
+      line-height: 1.5;
+    }
+  }
+
+  .learn-more-btn,.details-btn {
+    @include contentSize(161px,46px);
+    @include border(1px solid map.get($colors,"blueShade"));
+    @include flex(true,$justify:center,$align:center);
+    @include clickable(map.get($colors,"blueShade"),map.get($colors,"whiteShade"));
+    @include font($size:18px,$text:capitalize)
   }
 }

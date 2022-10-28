@@ -2,7 +2,7 @@
 @include wrapper("large",90%);
 @include wrapper($width:90%);
 //wrapper end here
-
+@include img(cover);
 //header start here
 .header {
   @include contentSize(100%);
@@ -24,6 +24,8 @@
       }
     }
   }
+
+  .menu { @include display(none);}
 
   nav{  @include flex($basis:80%); }
 

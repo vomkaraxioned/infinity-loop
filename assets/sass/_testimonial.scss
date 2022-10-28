@@ -1,0 +1,32 @@
+.testimonials {
+  padding: 105px 0 166px 0;
+  @include background($url:"https://dummyimage.com/1360x863/f0f");
+
+  &__title {
+    @include font(map.get($colors,"whiteShade"),$size:$large,$text:capitalize,$textAlign:center);
+  }
+
+  &__description {
+    @include contentSize(70%);
+    padding: 37px 0 87px 0;
+    margin: $autoMargin;
+    @include font(map.get($colors,"whiteShade"),$size:18px,$textAlign:center);
+    line-height: 1.5;
+  }
+
+  &__feedbacks {
+    gap:2%;
+    @include flex(true,$justify:center);
+  }
+
+  &__feedback {
+    @include flex(true,$direction:column,$basis:20%,$align:center,$justify:center);
+  }
+
+  .profile {
+    @include contentSize(129px,129px);
+    img {
+      @include border(null,50%);
+    }
+  }
+}
