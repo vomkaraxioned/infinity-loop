@@ -1,0 +1,11 @@
+.what-we-do {
+  padding: 182px 0 103px 0;
+
+  &__title {
+    @include font(map.get($colors,"blueShade"),$size:$large,$text:capitalize);
+  }
+
+  &__description {
+
+  }
+}

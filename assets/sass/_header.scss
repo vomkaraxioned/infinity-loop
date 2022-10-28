@@ -1,0 +1,48 @@
+//wrapper start here
+@include wrapper("large",90%);
+@include wrapper($width:90%);
+//wrapper end here
+
+//header start here
+.header {
+  @include contentSize(100%);
+  padding-top: 20px;
+  @include position(absolute,0);
+  @include background($color:transparent);
+
+  .wrapper-large { @include flex(true);}
+
+  .logo {    
+    @include flex($basis:20%);
+    a{
+      @include font(map.get($colors,"whiteShade"),$size:24px,$text:capitalize,$weight:900);
+      
+      @include reverseResponsive(map.get($devices,"desktop")){
+        &:hover{
+          @include font(map.get($colors,"activeControl"));
+        }
+      }
+    }
+  }
+
+  nav{  @include flex($basis:80%); }
+
+  .navigation{
+    gap: 5%;
+    @include flex(true,$justify:flex-end);
+    &__item{
+
+      a{
+        @include font(map.get($colors,"whiteShade"),$size:21px,$text:capitalize);
+
+        @include reverseResponsive(map.get($devices,"desktop")){
+          &:hover{
+            @include font(map.get($colors,"activeControl"));
+          }
+        }
+      }
+    }
+  }
+
+}
+//header end here
