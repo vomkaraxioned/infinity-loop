@@ -1,6 +1,6 @@
 .testimonials {
   padding: 105px 0 166px 0;
-  @include background($url:"https://dummyimage.com/1360x863/f0f");
+  @include background($url:"https://dummyimage.com/1360x863/f0f/f0f");
 
   &__title {
     @include font(map.get($colors,"whiteShade"),$size:$large,$text:capitalize,$textAlign:center);
@@ -15,18 +15,49 @@
   }
 
   &__feedbacks {
-    gap:2%;
+    gap:5%;
     @include flex(true,$justify:center);
   }
 
   &__feedback {
     @include flex(true,$direction:column,$basis:20%,$align:center,$justify:center);
+
+    &__description {
+      padding: 37px 0 27px 0;
+      @include font(map.get($colors,"whiteShade"),$size:16px);
+      line-height: 1.3;
+    }
+    &__client {
+      @include font(map.get($colors,"whiteShade"),$size:18px,$text:capitalize);
+
+      span{  @include font($text:uppercase);}
+    }
   }
 
   .profile {
     @include contentSize(129px,129px);
     img {
       @include border(null,50%);
+    }
+  }
+
+  &__controls {
+    padding-top: 68px;
+    gap: 2%;
+    @include flex(true,$align:center,$justify:center);
+  }
+
+  &__control {
+    @include contentSize(15px,15px);
+    @include border(none,50%);
+    @include background($color:map.get($colors,"greyShade"));
+    text-indent: -9999px;
+
+    &:hover {
+      @include background($color:map.get($colors,"activeControl"));
+    }
+    &:first-child {
+      @include background($color:map.get($colors,"activeControl"));
     }
   }
 }

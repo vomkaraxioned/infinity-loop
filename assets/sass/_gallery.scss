@@ -1,0 +1,40 @@
+.gallery {
+  padding: 121px 0 92px 0;
+
+  &__title {
+    @include font(map.get($colors,"blueShade"),$size:$large,$text:capitalize,$textAlign:center);
+  }
+
+  &__description {
+    @include contentSize(70%);
+    padding: 37px 0 87px 0;
+    margin: $autoMargin;
+    @include font(map.get($colors,"blackShade"),$size:18px,$textAlign:center);
+    line-height: 1.5;
+  }
+
+  &__items {
+    gap: 2%;
+    @include flex(true,$justify:center);
+  }
+
+  &__controls {
+    padding-top: 68px;
+    gap: 2%;
+    @include flex(true,$align:center,$justify:center);
+  }
+
+  &__control {
+    @include contentSize(15px,15px);
+    @include border(none,50%);
+    @include background($color:map.get($colors,"greyShade"));
+    text-indent: -9999px;
+
+    &:hover {
+      @include background($color:map.get($colors,"activeControl"));
+    }
+    &:first-child {
+      @include background($color:map.get($colors,"activeControl"));
+    }
+  }
+}

@@ -27,7 +27,7 @@
   &__service {
     padding-bottom: 40px;
     @include position(relative);
-    @include flex(true,40%,$direction:column);
+    @include flex(true,38%,$direction:column);
 
     $i:1;
    @each $icon in $what-section {
