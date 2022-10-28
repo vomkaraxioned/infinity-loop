@@ -4,9 +4,10 @@
 //wrapper end here
 @include img(cover);
 //header start here
+
 .header {
   @include contentSize(100%);
-  padding-top: 20px;
+  padding-top: 20px; 
   @include position(absolute,0);
   @include background($color:transparent);
 
@@ -23,9 +24,24 @@
         }
       }
     }
+
+    @include responsive(map.get($devices,"ipad")) {
+      @include flex($basis:80%);
+    }
   }
 
-  .menu { @include display(none);}
+  .menu { 
+    @include display(none);
+    @include font(map.get($colors,"whiteShade"),$size:21px);
+    text-indent: -9999px;
+
+    @include responsive(map.get($devices,"tablet")) {
+      @include display(block);
+      &::before {
+        @include icon($menu,true);
+      }
+    }
+  }
 
   nav{  @include flex($basis:80%); }
 
@@ -44,7 +60,28 @@
         }
       }
     }
+
+    @include responsive(map.get($devices,"tablet")) {
+      @include display(none);
+    }
   }
 
 }
 //header end here
+
+//navigation and hamburger styling for tablet and mobile start here
+@include responsive(map.get($devices,"tablet")) {
+
+ .menu:hover~.navigation {
+   @include contentSize(100%,100vh);
+   @include position(absolute,$top:45px,$right:0);
+   @include background($color:rgba(0,0,0,0.7));
+  @include flex(true,$direction:column,$justify:center,$align:center);
+ }
+
+ .navigation__item {
+   padding-bottom: 20px;
+   @include font($textAlign:center);
+ }
+ 
+}

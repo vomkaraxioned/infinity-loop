@@ -1,3 +1,4 @@
+//testimonial start here
 .testimonials {
   padding: 105px 0 166px 0;
   @include background($url:"https://dummyimage.com/1360x863/f0f/f0f");
@@ -17,6 +18,12 @@
   &__feedbacks {
     gap:5%;
     @include flex(true,$justify:center);
+
+    @include responsive(map.get($devices,"ipad")) {
+      &{
+        @include flex($direction:column);
+      }
+    }
   }
 
   &__feedback {
@@ -31,6 +38,20 @@
       @include font(map.get($colors,"whiteShade"),$size:18px,$text:capitalize);
 
       span{  @include font($text:uppercase);}
+    }
+
+    @include responsive(map.get($devices,"tablet")) {
+      &{
+        @include flex($basis:32%);
+      }
+    }
+
+    @include responsive(map.get($devices,"ipad")) {
+      &{
+        @include contentSize(80%);
+        padding-bottom: 80px;
+        margin: $autoMargin;
+      }
     }
   }
 
@@ -61,3 +82,4 @@
     }
   }
 }
+//testimonial end here

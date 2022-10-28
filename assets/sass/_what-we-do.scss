@@ -1,60 +1,103 @@
+//what we do section start here
 .what-we-do {
   padding: 182px 0 63px 0;
 
   &__title {
-    @include font(map.get($colors,"blueShade"),$size:$large,$text:capitalize);
+    @include font(map.get($colors, "blueShade"), $size:$large, $text:capitalize);
   }
 
   &__description {
     padding: 47px 0 89px 0;
-    @include font(map.get($colors,"blackShade"),$size:21px);
+
+    @include font(map.get($colors, "blackShade"), $size:21px);
     line-height: 1.5;
 
     a {
-      @include font(map.get($colors,"blueShade"));
+      @include font(map.get($colors, "blueShade"));
 
       &:hover {
-        @include font(map.get($colors,"greyShade"));
+        @include font(map.get($colors, "greyShade"));
       }
     }
+
+    @include responsive(map.get($devices, "ipad")) {
+      padding-bottom: 100px;
+    }
+
   }
 
   &__services {
     gap: 10%;
-    @include flex(true,$wrap:wrap,$justify:center);
+    @include flex(true, $wrap:wrap, $justify:center);
+
+    @include responsive(map.get($devices, "ipad")) {
+      & {
+        gap: 100px;
+      }
+    }
   }
 
   &__service {
     padding-bottom: 40px;
     @include position(relative);
-    @include flex(true,38%,$direction:column);
+    @include flex(true, 38%, $direction:column);
 
-    $i:1;
-   @each $icon in $what-section {
-    &:nth-child(#{$i})::before{
-      @include position(absolute,$left:-15%);
-      @include font(map.get($colors,"blueShade"),$size:42px);
-      @include icon($icon);
+    $i: 1;
+
+    @each $icon in $what-section {
+      &:nth-child(#{$i})::before {
+        @include position(absolute, $left:-15%);
+
+        @include responsive(map.get($devices, "tablet")) {
+          & {
+            @include position(absolute, $left:-27%);
+          }
+        }
+
+        @include responsive(map.get($devices, "ipad")) {
+          & {
+            @include position(absolute, $top:-21%, $left:45%);
+          }
+        }
+
+        @include font(map.get($colors, "blueShade"), $size:42px);
+        @include icon($icon);
+      }
+
+      $i:$i+1;
     }
-    $i:$i+1;
-   }
 
     &__title {
-      @include font(map.get($colors,"blueShade"),$size:26px,$text:capitalize);
+      @include font(map.get($colors, "blueShade"), $size:26px, $text:capitalize);
     }
 
     &__description {
-      padding:32px 0 45px 0 ;
-      @include font(map.get($colors,"blackShade"),$size:18px,$text:capitalize);
+      padding: 32px 0 45px 0;
+      @include font(map.get($colors, "blackShade"), $size:18px, $text:capitalize);
       line-height: 1.5;
+    }
+
+    @include responsive(map.get($devices, "tablet")) {
+      & {
+        @include flex($basis:32%);
+      }
+    }
+
+    @include responsive(map.get($devices, "ipad")) {
+      & {
+        @include flex($basis:80%);
+      }
     }
   }
 
-  .learn-more-btn,.details-btn {
-    @include contentSize(161px,46px);
-    @include border(1px solid map.get($colors,"blueShade"));
-    @include flex(true,$justify:center,$align:center);
-    @include clickable(map.get($colors,"blueShade"),map.get($colors,"whiteShade"));
-    @include font($size:18px,$text:capitalize)
+  .learn-more-btn,
+  .details-btn {
+    @include contentSize(161px, 46px);
+    @include border(1px solid map.get($colors, "blueShade"));
+    @include flex(true, $justify:center, $align:center);
+    @include clickable(map.get($colors, "blueShade"), map.get($colors, "whiteShade"));
+    @include font($size:18px, $text:capitalize)
   }
 }
+
+//what we do section end here

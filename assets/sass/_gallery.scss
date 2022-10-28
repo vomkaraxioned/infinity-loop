@@ -1,3 +1,4 @@
+//gallery start here
 .gallery {
   padding: 121px 0 92px 0;
 
@@ -16,6 +17,18 @@
   &__items {
     gap: 2%;
     @include flex(true,$justify:center);
+
+    @include responsive(map.get($devices,"ipad")) {
+      gap:40px;
+      @include flex($direction:column);
+    }
+  }
+
+  &__item {
+    @include responsive(map.get($devices,"ipad")) {
+      @include contentSize(80%);
+      margin: 0 auto;
+    }
   }
 
   &__controls {
@@ -38,3 +51,4 @@
     }
   }
 }
+//gallery end here

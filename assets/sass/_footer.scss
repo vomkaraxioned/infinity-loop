@@ -1,16 +1,17 @@
+//footer start here
 .contact-us {
   padding: 73px 0 24px 0;
   @include background($url:"https://dummyimage.com/1360x916/000");
 
   &__title {
-    @include font(map.get($colors,"whiteShade"),$size:$large,$text:capitalize,$textAlign:center);
+    @include font(map.get($colors, "whiteShade"), $size:$large, $text:capitalize, $textAlign:center);
   }
 
   &__description {
     @include contentSize(70%);
     padding: 37px 0 87px 0;
     margin: $autoMargin;
-    @include font(map.get($colors,"whiteShade"),$size:18px,$textAlign:center);
+    @include font(map.get($colors, "whiteShade"), $size:18px, $textAlign:center);
     line-height: 1.5;
   }
 
@@ -20,46 +21,57 @@
     margin: $autoMargin;
     gap: 15%;
     @include flex(true);
+
+    @include responsive(map.get($devices, "tablet")) {
+      & {
+        @include contentSize(92%);
+      }
+    }
+
+    @include responsive(map.get($devices, "ipad")) {
+      @include flex($direction:column);
+    }
   }
 
   &__form {
-    @include flex(true,45%,$direction:column);
+    @include flex(true, 45%, $direction:column);
 
     &__input {
       padding-bottom: 20px;
 
       @include flex(true);
+
       input {
         @include contentSize(90%);
         padding: 15px 5%;
-        @include border(1px solid map.get($colors,"whiteShade"),5px);
+        @include border(1px solid map.get($colors, "whiteShade"), 5px);
         @include background($color:transparent);
       }
 
       input::placeholder {
-        @include font(map.get($colors,"whiteShade"),$size:18px);
+        @include font(map.get($colors, "whiteShade"), $size:18px);
       }
 
       input:focus {
-        @include border(1px solid map.get($colors,"blueShade"));
+        @include border(1px solid map.get($colors, "blueShade"));
         outline: none;
       }
 
       textarea {
         @include contentSize(90%);
         padding: 15px 5%;
-        @include border(1px solid map.get($colors,"whiteShade"),5px);
+        @include border(1px solid map.get($colors, "whiteShade"), 5px);
         @include background($color:transparent);
       }
 
       textarea::placeholder {
-        @include font(map.get($colors,"whiteShade"),$size:18px);
+        @include font(map.get($colors, "whiteShade"), $size:18px);
       }
 
       textarea:focus {
-        @include border(1px solid map.get($colors,"blueShade"));
+        @include border(1px solid map.get($colors, "blueShade"));
         outline: none;
-      } 
+      }
     }
 
     &__submit {
@@ -68,59 +80,79 @@
       input {
         @include contentSize(90%);
         padding: 15px 5%;
-        @include border(1px solid map.get($colors,"blueShade"),5px);
-        @include clickable(map.get($colors,"blueShade"),map.get($colors,"whiteShade"));
+        @include border(1px solid map.get($colors, "blueShade"), 5px);
+        @include clickable(map.get($colors, "blueShade"), map.get($colors, "whiteShade"));
         @include font($size:18px);
       }
+    }
+
+    @include responsive(map.get($devices, "ipad")) {
+      padding-bottom: 80px;
     }
   }
 
   &__social-links {
-    @include flex(true,$direction:column);
+    @include flex(true, $direction:column);
   }
 
   &__social-link {
     padding-bottom: 45px;
     @include position(relative);
 
-    $i:1;
-      @each $icon in $contact-section {
-       &:nth-child(#{$i}) a::before{
-         @include position(absolute,$left:-40%);
-         @include font(map.get($colors,"whiteShade"),$size:38px);
-         @include icon($icon);
-       }
-       $i:$i+1;
+    $i: 1;
+
+    @each $icon in $contact-section {
+      &:nth-child(#{$i}) a::before {
+
+        @include position(absolute, $left:-40%);
+        @include font(map.get($colors, "whiteShade"), $size:38px);
+        @include icon($icon);
+
+        @include responsive(map.get($devices, "ipad")) {
+          @include position(absolute, $left:0);
+        }
       }
 
-    a {
-      @include font(map.get($colors,"whiteShade"),$size:18px,$text:capitalize);
+      $i:$i+1;
+    }
 
-      @include reverseResponsive(map.get($devices,"desktop")){
+    a {
+      @include font(map.get($colors, "whiteShade"), $size:18px, $text:capitalize);
+
+      @include reverseResponsive(map.get($devices, "desktop")) {
         &:hover {
-          @include font(map.get($colors,"blueShade"));
+          @include font(map.get($colors, "blueShade"));
         }
 
         &:hover::before {
-          @include font(map.get($colors,"blueShade"));
+          @include font(map.get($colors, "blueShade"));
         }
+      }
+
+      @include responsive(map.get($devices, "ipad")) {
+        padding-left: 17%;
+        @include display(block);
       }
     }
   }
 }
 
 .copyright {
-  @include font(map.get($colors,"whiteShade"),$size:18px,$textAlign:center,$text:capitalize);
+  @include font(map.get($colors, "whiteShade"), $size:18px, $textAlign:center, $text:capitalize);
 
-  span{ @include font($text:lowercase);}
+  span {
+    @include font($text:lowercase);
+  }
 
   a {
-     @include font(map.get($colors,"whiteShade"),$text:uppercase);
+    @include font(map.get($colors, "whiteShade"), $text:uppercase);
 
-     @include reverseResponsive(map.get($devices,"desktop")){
+    @include reverseResponsive(map.get($devices, "desktop")) {
       &:hover {
-        @include font(map.get($colors,"blueShade"));
+        @include font(map.get($colors, "blueShade"));
       }
     }
   }
 }
+
+//footer end here
